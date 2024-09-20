@@ -1,5 +1,5 @@
 # calculator_interactive.py
-from calculator import add, subtract, multiply, divide
+from calculator import Calculator
 
 def main():
     while True:
@@ -11,14 +11,14 @@ def main():
         b = float(input("Enter second number: "))
 
         if operation == '+':
-            print(f"Result: {add(a, b)}")
+            print(f"Result: {Calculator.add(a, b)}")
         elif operation == '-':
-            print(f"Result: {subtract(a, b)}")
+            print(f"Result: {Calculator.subtract(a, b)}")
         elif operation == '*':
-            print(f"Result: {multiply(a, b)}")
+            print(f"Result: {Calculator.multiply(a, b)}")
         elif operation == '/':
             try:
-                print(f"Result: {divide(a, b)}")
+                print(f"Result: {Calculator.divide(a, b)}")
             except ValueError as e:
                 print(e)
         else:
