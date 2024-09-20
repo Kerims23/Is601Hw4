@@ -3,9 +3,14 @@ from calculator import Calculator
 
 def main():
     while True:
-        operation = input("Enter operation (+, -, *, / or 'q' to quit): ")
+        operation = input("Enter operation (+, -, *, /, 'h' for history, or 'q' to quit): ")
         if operation == 'q':
             break
+        elif operation == 'h':
+            print("Calculation History:")
+            for entry in Calculator.get_history():
+                print(entry)
+            continue
 
         a = float(input("Enter first number: "))
         b = float(input("Enter second number: "))
