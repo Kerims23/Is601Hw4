@@ -45,28 +45,33 @@ Static are things to check validation
 '''
 # calculator/__init__.py
 class Calculator:
-    history = []  # this is to store the list of inputs as history.
+    '''this is to record the history of all inputs'''
+    history = []  
 
     @staticmethod
     def add(a: float, b: float) -> float:
+        '''adding docstring to get in the habit'''
         result = a + b
         Calculator.history.append(f"Added {a} and {b}: {result}")
         return result
 
     @staticmethod
     def subtract(a: float, b: float) -> float:
+        '''this function is to do the subtractions for calculator'''
         result = a - b
         Calculator.history.append(f"Subtracted {b} from {a}: {result}")
         return result
 
     @staticmethod
     def multiply(a: float, b: float) -> float:
+        '''this function is to multiply for calculator'''
         result = a * b
         Calculator.history.append(f"Multiplied {a} by {b}: {result}")
         return result
 
     @staticmethod
     def divide(a: float, b: float) -> float:
+        '''this function is to divide for calculator'''
         if b == 0:
             raise ValueError("Cannot divide by zero.")
         result = a / b
@@ -75,8 +80,10 @@ class Calculator:
 
     @classmethod
     def get_history(cls):
+        '''this function is to call the history list'''
         return cls.history
 
     @classmethod
     def clear_history(cls):
+        '''this function is to clear history'''
         cls.history.clear()
