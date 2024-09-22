@@ -50,16 +50,20 @@ In part 3 the goal was
 # calculator/__init__.py
 from calculator.operations import add, subtract, multiply, divide
 from calculator.transactions import Transactions
+from calculator.calculation import Calculation
 
 class Calculator:
     '''Calculator class to perform basic operations and track history.'''
 
     @staticmethod
     def _perform_operation(a: float, b: float, operation) -> float:
-        """Create and perform a calculation, then return the result."""
-        result = operation(a, b)
-        Transactions.add_to_history(operation.__name__, a, b, result)
-        return result
+        '''Create and perform a calculation, then return the result and store it in history.'''
+        # Create a Calculation object
+        calculation = Calculation.create(a, b, operation)
+        # Add the calculation to the history
+        Transactions.add_to_history(operation.__name__, a, b, calculation.perform())
+        # Perform and return the result
+        return calculation.perform()
 
     @staticmethod
     def add(a: float, b: float) -> float:
