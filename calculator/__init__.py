@@ -44,46 +44,46 @@ Static are things to check validation
 
 '''
 # calculator/__init__.py
+from calculator.operations import add, subtract, multiply, divide
+from calculator.transactions import Transactions
+
 class Calculator:
-    '''this is to record the history of all inputs'''
-    history = []  
+    '''Calculator class to perform basic operations and track history.'''
 
     @staticmethod
     def add(a: float, b: float) -> float:
-        '''adding docstring to get in the habit'''
-        result = a + b
-        Calculator.history.append(f"Added {a} and {b}: {result}")
+        '''Performs addition and stores the result in the history.'''
+        result = add(a, b)
+        Transactions.add_to_history('add', a, b, result)
         return result
 
     @staticmethod
     def subtract(a: float, b: float) -> float:
-        '''this function is to do the subtractions for calculator'''
-        result = a - b
-        Calculator.history.append(f"Subtracted {b} from {a}: {result}")
+        '''Performs subtraction and stores the result in the history.'''
+        result = subtract(a, b)
+        Transactions.add_to_history('subtract', a, b, result)
         return result
 
     @staticmethod
     def multiply(a: float, b: float) -> float:
-        '''this function is to multiply for calculator'''
-        result = a * b
-        Calculator.history.append(f"Multiplied {a} by {b}: {result}")
+        '''Performs multiplication and stores the result in the history.'''
+        result = multiply(a, b)
+        Transactions.add_to_history('multiply', a, b, result)
         return result
 
     @staticmethod
     def divide(a: float, b: float) -> float:
-        '''this function is to divide for calculator'''
-        if b == 0:
-            raise ValueError("Cannot divide by zero.")
-        result = a / b
-        Calculator.history.append(f"Divided {a} by {b}: {result}")
+        '''Performs division and stores the result in the history.'''
+        result = divide(a, b)
+        Transactions.add_to_history('divide', a, b, result)
         return result
 
     @classmethod
-    def get_history(cls):
-        '''this function is to call the history list'''
-        return cls.history
+    def get_history(cls) -> list:
+        '''Returns the history of calculations.'''
+        return Transactions.get_history()
 
     @classmethod
-    def clear_history(cls):
-        '''this function is to clear history'''
-        cls.history.clear()
+    def clear_history(cls) -> None:
+        '''Clears the history of calculations.'''
+        Transactions.clear_history()
