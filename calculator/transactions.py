@@ -1,23 +1,31 @@
-class Transactions:
-    '''Class to track history of calculations.'''
-    history = []  # Class variable to store history of calculations
+from typing import Callable, List, Optional
+
+from calculator.calculation import Calculation
+
+class Calculations:
+    history: List[Calculation] = []
 
     @classmethod
-    def add_to_history(cls, operation: str, a: float, b: float, result: float) -> None:
-        '''Adds a calculation to the history.'''
-        cls.history.append({
-            'operation': operation,
-            'operand1': a,
-            'operand2': b,
-            'result': result
-        })
+    def add_calculation(cls, calculation: Calculation):
+        """Add a new calculation to the history."""
+        cls.history.append(calculation)
 
     @classmethod
-    def get_history(cls) -> list:
-        '''Returns the history of calculations.'''
+    def get_history(cls) -> List[Calculation]:
+        """Retrieve the entire history of calculations."""
         return cls.history
 
     @classmethod
-    def clear_history(cls) -> None:
-        '''Clears the history of calculations.'''
+    def clear_history(cls):
+        """Clear the history of calculations."""
         cls.history.clear()
+
+    @classmethod
+    def get_latest(cls) -> Optional[Calculation]:
+        """Get the latest calculation. Returns None if there's no history."""
+        return cls.history[-1] if cls.history else None
+
+    @classmethod
+    def find_by_operation(cls, operation_name: str) -> List[Calculation]:
+        """Find and return a list of calculations by operation name."""
+        return [calc for calc in cls.history if calc.operation.__name__ == operation_name]

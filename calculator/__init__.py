@@ -48,49 +48,37 @@ Static are things to check validation
 In part 3 the goal was 
 '''
 # calculator/__init__.py
-from calculator.operations import add, subtract, multiply, divide
-from calculator.transactions import Transactions
-from calculator.calculation import Calculation
+# Import necessary modules and classes
+from calculator.transactions import Calculations  # Manages history of calculations
+from calculator.operations import add, subtract, multiply, divide  # Arithmetic operations
+from calculator.calculation import Calculation  # Represents a single calculation
+from typing import Callable  # For type hinting callable objects
 
+# Definition of the Calculator class
 class Calculator:
-    '''Calculator class to perform basic operations and track history.'''
-
     @staticmethod
-    def _perform_operation(a: float, b: float, operation) -> float:
-        '''Create and perform a calculation, then return the result and store it in history.'''
-        # Create a Calculation object
+    def _perform_operation(a: float, b: float, operation: Callable[[float, float], float]) -> float:
+        """Create and perform a calculation, then return the result."""
         calculation = Calculation.create(a, b, operation)
-        # Add the calculation to the history
-        Transactions.add_to_history(operation.__name__, a, b, calculation.perform())
-        # Perform and return the result
+        Calculations.add_calculation(calculation)
         return calculation.perform()
 
     @staticmethod
     def add(a: float, b: float) -> float:
-        '''Performs addition and stores the result in the history.'''
+        """Perform addition."""
         return Calculator._perform_operation(a, b, add)
 
     @staticmethod
     def subtract(a: float, b: float) -> float:
-        '''Performs subtraction and stores the result in the history.'''
+        """Perform subtraction."""
         return Calculator._perform_operation(a, b, subtract)
 
     @staticmethod
     def multiply(a: float, b: float) -> float:
-        '''Performs multiplication and stores the result in the history.'''
+        """Perform multiplication."""
         return Calculator._perform_operation(a, b, multiply)
 
     @staticmethod
     def divide(a: float, b: float) -> float:
-        '''Performs division using the operation defined in operations.'''
+        """Perform division."""
         return Calculator._perform_operation(a, b, divide)
-
-    @classmethod
-    def get_history(cls) -> list:
-        '''Returns the history of calculations.'''
-        return Transactions.get_history()
-
-    @classmethod
-    def clear_history(cls) -> None:
-        '''Clears the history of calculations.'''
-        Transactions.clear_history()
