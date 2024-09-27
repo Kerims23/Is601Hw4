@@ -5,6 +5,9 @@ This file is to create test data to pass through main.py.
 
 import random
 from calculator.operations import add, subtract, multiply, divide
+from faker import Faker
+
+fake = Faker()
 
 # Function to generate test data with random floats for calculations
 def generate_test_data(num_records):
