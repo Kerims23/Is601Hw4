@@ -29,3 +29,12 @@ def test_multiplication():
     assert Calculator.multiply(0, 5) == 0   # Edge case
     assert Calculator.multiply(-1, 5) == -5  # Edge case
     assert Calculator.multiply(2.5, 2) == 5.0  # Testing with floats
+
+def test_exponent():
+    assert Calculator.exponent(2, 3) == 8
+
+def test_radical_expression():
+    assert Calculator.radical_expression(8, 3) == 2
+    assert Calculator.radical_expression(16, 4) == 2
+    with pytest.raises(ValueError):
+        Calculator.radical_expression(-8, 2)  # Error for even root of negative number

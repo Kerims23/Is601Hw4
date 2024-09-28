@@ -50,7 +50,7 @@ In part 3 the goal was
 # calculator/__init__.py
 # Import necessary modules and classes
 from calculator.transactions import Calculations  # Manages history of calculations
-from calculator.operations import add, subtract, multiply, divide  # Arithmetic operations
+from calculator.operations import add, subtract, multiply, divide, radical_expression, exponent  # Arithmetic operations
 from calculator.calculation import Calculation  # Represents a single calculation
 from typing import Callable  # For type hinting callable objects
 
@@ -82,3 +82,11 @@ class Calculator:
     def divide(a: float, b: float) -> float:
         """Perform division."""
         return Calculator._perform_operation(a, b, divide)
+    
+    @staticmethod
+    def exponent(a, b):
+        return Calculator._perform_operation(a, b, exponent)
+
+    @staticmethod
+    def radical_expression(a, b):
+        return Calculator._perform_operation(a, b, radical_expression)

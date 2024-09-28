@@ -10,7 +10,9 @@ def calculate_and_print(a, b, operation_name):
         'add': Calculator.add,
         'subtract': Calculator.subtract,
         'multiply': Calculator.multiply,
-        'divide': Calculator.divide
+        'divide': Calculator.divide,
+        'exponent': Calculator.exponent,
+        'radical_expression': Calculator.radical_expression,
     }
 
     # Unified error handling for decimal conversion
@@ -48,7 +50,7 @@ def main():
         if command == 'c':
             a = input("Enter the first number: ")
             b = input("Enter the second number: ")
-            operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+            operation = input("Enter the operation (add, subtract, multiply, divide, exponent, radical_expression): ").strip().lower()
             calculate_and_print(a, b, operation)
         
         elif command == 'h':

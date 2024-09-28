@@ -1,5 +1,6 @@
 # calculator/operations.py
 
+import math
 # Define the functions with type hints
 def add(a: float, b: float) -> float:
     """Return the sum of a and b."""
@@ -19,12 +20,12 @@ def divide(a: float, b: float) -> float:
         raise ValueError("Cannot divide by zero")
     return a / b
 
-def square_root(a: float) -> float:
-    """Return the square root of a. Raise ValueError if a is negative."""
-    if a < 0:
-        raise ValueError("Cannot compute square root of a negative number")
-    return a ** 0.5  # Using exponentiation to calculate the square root
+def exponent(a, b):
+    """Raise base to the power of exp."""
+    return a ** b
 
-def exponentiate(base: float, exponent: float) -> float:
-    """Return base raised to the power of exponent."""
-    return base ** exponent  # Using exponentiation
+def radical_expression(a, b):
+    """Return the nth root of the value."""
+    if a < 0 and b % 2 == 0:
+        raise ValueError("Cannot take an even root of a negative number.")
+    return a ** (1 / b)
