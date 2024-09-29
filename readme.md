@@ -10,3 +10,6 @@ Broke up work into a few branches.
 
     - 4th branch I added new functionality to the calculator which is exponenets and radical expression. This was a nice way to learn about how to add onto the code but also to learn how to set up the faker library for those extra functionalities. These tests are in test_calculator.py which I added a lot more test asserts. 
         - only problem so far is handling the radicals because if I make the results decimal it throws more errors. For now I just have it round to the nearest whole number
+
+    - pytest --pylint --cov ran at 100%
+    - pytest --num_records=1000 had no errors and successfully ran all 1000 tests. 
