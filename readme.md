@@ -1,6 +1,7 @@
 # hw 4
 
 Broke up work into a few branches. 
+
     - First branch was a try to do the code from scratch and I was successful with the user interface but when it came to implementing faker I ran into a lot of errors. 
 
     - Second branch I start fresh with the professors code, ran everything. 
