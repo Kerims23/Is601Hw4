@@ -16,8 +16,7 @@ as well as the functionality of the Calculation class that encapsulates these op
 from decimal import Decimal
 import pytest
 from calculator.calculation import Calculation
-from calculator.operations import add, subtract, multiply, divide
-
+from calculator.operations import add, divide #subtract, multiply
 # pytest.mark.parametrize decorator is used to parameterize a test function, enabling it to be called
 # with different sets of arguments. Here, it's used to test various scenarios of arithmetic operations
 # with both integer and decimal operands to ensure the operations work correctly under different conditions.
@@ -57,6 +56,6 @@ def test_divide_by_zero():
     This test checks that attempting to perform a division operation with a zero divisor
     correctly raises a ValueError, as dividing by zero is mathematically undefined and should be handled as an error.
     """
-    calc = Calculation(Decimal('10'), Decimal('0'), divide)  # Create a Calculation instance with a zero divisor.
-    with pytest.raises(ValueError, match="Cannot divide by zero"):  # Expect a ValueError to be raised.
+    calc = Calculation(Decimal('10'), Decimal('0'), divide)#Create a Calculation instance with a zero divisor.
+    with pytest.raises(ValueError, match="Cannot divide by zero"):#Expect ValueError to be raised.
         calc.perform()  # Attempt to perform the calculation, which should trigger the ValueError.
