@@ -31,9 +31,14 @@ def test_multiplication():
     assert Calculator.multiply(2.5, 2) == 5.0  # Testing with floats
 
 def test_exponent():
+    '''test exponent works'''
     assert Calculator.exponent(2, 3) == 8
+    assert Calculator.exponent(2, 2) == 4
+    assert Calculator.exponent(12, 2) == 144
 
 def test_radical_expression():
+    '''test radical expressions work'''
+    assert Calculator.radical_expression(144, -2) == 0
     assert Calculator.radical_expression(8, 3) == 2
     assert Calculator.radical_expression(16, 4) == 2
     with pytest.raises(ValueError):

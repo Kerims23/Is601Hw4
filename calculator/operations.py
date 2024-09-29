@@ -24,8 +24,13 @@ def exponent(a, b):
     """Raise base to the power of exp."""
     return a ** b
 
-def radical_expression(a, b):
+def radical_expression(a, b, precision = 0):
     """Return the nth root of the value."""
+    #b = abs(b)  # Ensure b is always positive
+    # if b < 0:
+    #     result = a ** (1 / b)
+    #     return round(result,precision)
     if a < 0 and b % 2 == 0:
         raise ValueError("Cannot take an even root of a negative number.")
-    return a ** (1 / b)
+    result = a ** (1 / b)
+    return round(result,precision)
